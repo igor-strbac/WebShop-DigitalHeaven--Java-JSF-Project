@@ -1,0 +1,135 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+    background-image: url(images/pozadina.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    background-size:cover;
+}
+
+body {
+    margin: 0;
+    padding: 0;	
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0.3em 0 0.5em;
+}
+h1 { font-size: 38px;}
+h2 { font-size: 30px;
+     text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+h3 { font-size: 26px;}
+h4 { font-size: 22px;}
+h5 { font-size: 20px;}
+h6 { font-size: 18px;}
+
+a:link, a:visited {
+    color:#C51417;
+    text-decoration: none;
+}
+a:hover {
+    color:#A84B0B;
+    text-decoration: underline;
+}
+a:active {
+    color:#332223;
+}
+
+#wrapper {
+    width:720px;
+    padding:15px;
+    margin:0 auto;
+    background-color:#FFFFFF;
+    box-shadow:0 4px 5px #555555;
+    border-radius: 4px;
+}
+
+#header {
+    background:#882d61;
+    margin-bottom:15px;
+    padding:10px;
+    overflow:hidden;
+}
+
+#logo {
+    float:left;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 42px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+#logo p {
+    margin: 20px;
+}
+#slogan {
+    float:right;
+    color: #FFFFFF;
+    font-style:italic;
+    font-size: 18px;
+}
+#slogan p {
+    margin: 0;
+}
+
+#nav {
+    height:40px;
+    background:#534741;
+    margin-bottom:15px;
+}
+#nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#nav ul li {
+    float:left;
+    position: relative;
+}
+#nav ul li a {
+    padding:10px;
+    height:20px;
+    line-height: 20px;
+    display: block;
+    transition: 0.5s all ease;
+}
+#nav ul li a:link,
+#nav ul li a:visited {
+    color:#FFFFFF;
+    text-decoration: none;
+}
+#nav ul li a:hover {
+    color:#FFFFFF;
+    background:#C51417;
+}
+#nav ul li a:active {
+    color:#333333;
+    background:#CCCCCC;
+}
+
+#login  {
+    font-size: 13px;
+    padding: 0;
+}
+
+#stari_korisnik {
+    float: left;
+}
+
+
+#footer {
+    background:#534741;
+    clear:both;
+    text-align: center;
+    color: #CCCCCC;
+    font-size: 12px;
+    padding: 8px;
+    margin-top: 8px;
+}
+#footer p{
+    margin: 0;
+}

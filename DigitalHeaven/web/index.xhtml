@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>DigitalHeaven WebShop - Dobro došli</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Orbitron:400,700&amp;subset=latin-ext" rel="stylesheet"/>  
+        <link href="resources/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <div id="wrapper">
+            <div id="header">
+
+                <div id="logo">
+                    <p><b>DigitalHeaven.co</b></p>
+                </div>
+
+                <div id="slogan">
+                    <p>Vaš digitalni raj</p>
+                </div>
+
+            </div><!-- end #header -->
+
+            <div id="nav">
+
+                <ul>
+                    <li><a href="index.xhtml">Naslovna strana</a></li>
+                    <li><a href="aboutus.xhtml">O nama</a></li>
+                    <li><a href="contact.xhtml">Kontakt</a></li>
+                </ul>
+
+            </div><!-- end #nav -->
+
+            <div id="main">
+                <div id="login">
+                    <h:form rendered="#{loginMB.loggedIn}">
+                        <h:panelGrid id="userPanelId">
+                            <p>Prijavljeni korisnik: #{loginMB.loggedInUser.ime} #{loginMB.loggedInUser.prezime} <h:commandLink value="Odjava" actionListener="#{loginMB.logout()}" /></p>
+                        </h:panelGrid>
+                    </h:form>
+                    <h:panelGrid rendered="#{not loginMB.loggedIn}">
+                        <p>Za prijavu na Web Shop kliknite na <h:outputLink value="login.xhtml">prijava</h:outputLink></p>
+                        <p>Vi ste nov korisnik? Registrujte se klikom na link <h:outputLink value="register.xhtml">registracija</h:outputLink></p>
+                    </h:panelGrid>
+                </div> <!-- end #login -->
+                <hr />
+                <h2>Dobro došli na DigitalHeaven Webshop</h2>
+                <hr />
+                <h:form id="productForm">
+                    <h:dataTable value = "#{products.products}" var = "pr">
+
+                        <h:column>    				
+                            <f:facet name = "header">Naziv</f:facet>    				
+                                #{pr.naziv}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name = "header">Cena (din.)</f:facet>
+                                #{pr.cena}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name = "header"></f:facet>
+                            <h:commandButton value="Dodaj">
+                                <f:ajax execute="@form" render="korpaid" listener="#{cart.addProduct(pr)}" />
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                    <br />
+                    <h:outputText value="Izaberite željenu količinu: " />
+                    <h:selectOneMenu value = "#{cart.productNum}"> 
+                        <f:selectItem itemValue = "1" itemLabel = "1" /> 
+                        <f:selectItem itemValue = "2" itemLabel = "2" /> 
+                        <f:selectItem itemValue = "3" itemLabel = "3" /> 
+                        <f:selectItem itemValue = "4" itemLabel = "4" /> 
+                        <f:selectItem itemValue = "5" itemLabel = "5" /> 
+                    </h:selectOneMenu> 
+                </h:form>
+                <br />
+                <h4>Vaša korpa:</h4>
+                <hr />
+                <h:dataTable id="korpaid" value = "#{cart.cartItems}" var = "item">
+
+                    <h:column>    				
+                        <f:facet name = "header">Naziv</f:facet>    				
+                            #{item.productName}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Cena (din.)</f:facet>
+                            #{item.price}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Količina</f:facet>
+                            #{item.productNum}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header"><b>Ukupna cena</b></f:facet>
+                        <b>#{item.totalPrice}</b>
+                    </h:column>
+
+                </h:dataTable>
+
+                <hr />
+
+                <h:outputLink value="secured/purchase.xhtml">Potvrda kupovine</h:outputLink>
+            </div><!-- end #main -->
+            <div id="footer">
+                <p>Copyright &copy; DigitalHeaven.co 2018</p>
+            </div><!-- end #footer -->
+        </div><!-- end #wrapper -->
+    </h:body>
+
+
+
+</html>
+

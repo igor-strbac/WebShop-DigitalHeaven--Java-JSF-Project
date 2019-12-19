@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registracija</title>
+        <link href="resources/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <div id="wrapper">
+            <h2>Registracija novih korisnika</h2>
+            <hr />
+
+            <h:form>
+                <h:panelGrid id = "panel" columns = "4"
+                             cellpadding = "10" cellspacing = "1">
+                    <h:outputLabel value = "Korisničko ime:" />
+                    <h:inputText id="unfld" required="true" requiredMessage="Polje korisničko ime je obavezno" value="#{register.username}" />
+                    <h:outputLabel value = "" />
+                    <h:message for="unfld" />
+
+                    <h:outputLabel value = "Lozinka:" />
+                    <h:inputSecret id="passfld" required="true" requiredMessage="Polje lozinka je obavezno" value="#{register.password}" validatorMessage="Neispravan format,pratite uputstvo" >
+                        <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})" />
+                    </h:inputSecret>
+                    <h:outputLabel value = "6 do 20 karaktera sa najmanje jednom cifrom,
+                                   jednim velikim i jednim malim slovom" />
+                    <h:message for="passfld" />
+
+                    <h:outputLabel value = "Ime:" />
+                    <h:inputText id="namfld" required="true" requiredMessage="Polje ime je obavezno" value="#{register.name}" />
+                    <h:outputLabel value = "" />
+                    <h:message for="namfld" />
+
+
+                    <h:outputLabel value = "Prezime:" />
+                    <h:inputText id="surfld" required="true" requiredMessage="Polje prezime je obavezno" value="#{register.surname}" />
+                    <h:outputLabel value = "" />
+                    <h:message for="surfld" />
+
+                    <h:outputLabel value = "E-mail:" />
+                    <h:inputText id="emailfld" required="true" requiredMessage="Polje eMail je obavezno" value="#{register.email}" validatorMessage="Email nije ispravan!">
+                        <f:validateRegex pattern="^[_\w-\+]+(\.[_\w-]+)*@[\w-]+(\.[\w]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+                    </h:inputText>
+                    <h:outputLabel value = "" />                
+                    <h:message for="emailfld" />
+
+                    <h:outputLabel value = "Kontakt telefon:" />
+                    <h:inputText id="phonefld" required="true" requiredMessage="Polje telefon je obavezno" value="#{register.phoneNumber}" />
+                    <h:outputLabel value = "" />                
+                    <h:message for="phonefld" /> 
+
+                    <f:facet name = "footer">
+                        <h:panelGroup style = "display:block; text-align:left">
+                            <h:commandButton id = "submit" value = "Potvrda" action="#{register.register()}" />
+                        </h:panelGroup>
+                    </f:facet>
+                </h:panelGrid>
+                <h3><h:outputLabel value="#{register.message}" /></h3>
+            </h:form>
+            <h:outputLink value="index.xhtml">Povratak na glavnu stranu</h:outputLink>
+        </div><!-- end #wrapper -->
+    </h:body>
+</html>
+

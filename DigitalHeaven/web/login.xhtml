@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Prijava na Webshop</title>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <link href="resources/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <div id="wrapper">
+            <h2>Prijava   na   DigitalHeaven   Webshop</h2>
+            <hr />
+            <div id="mainlogin"> 
+                <h:form>
+                    <h:panelGrid id = "panel" columns = "3"
+                                 cellpadding = "10" cellspacing = "1">
+
+                        <h:outputLabel value = "Molimo  unesite  Vaše korisničko ime:" />
+                        <h:inputText id="unfld" required="true" requiredMessage="Morate uneti korisničko ime" value="#{loginMB.username}" />
+                        <h:message for="unfld" style ="color:red" />
+
+                        <h:outputLabel value = "Molimo unesite lozinku:" />
+                        <h:inputSecret id="passfld" required="true" requiredMessage="Morate uneti lozinku" value="#{loginMB.password}" />
+                        <h:message for="passfld" style ="color:red" />
+                        <div class="g-recaptcha" data-sitekey="6LcTXoQUAAAAAE7ayUw43KlB6dDfTo1WtEDn2k9I"></div>
+                        <div id="footerlogin">
+                            <f:facet name = "footer">
+                                <h:panelGroup style = "display:block; text-align:left">
+                                    <h:commandButton id = "submit" value = "Potvrda" action="#{loginMB.login()}" />
+                                </h:panelGroup>
+                            </f:facet>
+                        </div><!-- end #footerlogin -->
+                    </h:panelGrid>
+
+                    <h3><h:outputLabel value="#{loginMB.message}" /></h3>
+                </h:form>
+
+                <h:outputLink value="index.xhtml">Povratak na glavnu stranu</h:outputLink>
+            </div><!-- end #mainLogin -->
+        </div><!-- end #wrapper -->
+    </h:body>
+
+</html>
+

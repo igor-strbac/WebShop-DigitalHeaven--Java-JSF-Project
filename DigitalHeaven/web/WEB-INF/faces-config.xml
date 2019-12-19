@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <navigation-rule>
+        <from-view-id>/register.xhtml</from-view-id>
+        
+        <navigation-case> 
+            <from-action>#{register.register()}</from-action> 
+            <from-outcome>success</from-outcome> 
+            <to-view-id>/index.xhtml</to-view-id> 
+        </navigation-case>
+        
+        <navigation-case> 
+            <from-action>#{register.register()}</from-action> 
+            <from-outcome>failure</from-outcome> 
+            <to-view-id>/register.xhtml</to-view-id> 
+        </navigation-case>
+        
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        
+        <navigation-case> 
+            <from-action>#{loginMB.login()}</from-action> 
+            <from-outcome>success</from-outcome> 
+            <to-view-id>/index.xhtml</to-view-id> 
+        </navigation-case>
+        
+        <navigation-case> 
+            <from-action>#{loginMB.login()}</from-action> 
+            <from-outcome>failure</from-outcome> 
+            <to-view-id>/login.xhtml</to-view-id> 
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secured/purchase.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/secured/purchase.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <validator>
+        <validator-id>CreditCardValidator</validator-id>
+        <validator-class>webshop.beans.utils.MyCreditCardValidator</validator-class>
+    </validator>
+</faces-config>

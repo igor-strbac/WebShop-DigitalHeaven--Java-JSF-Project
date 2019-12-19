@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Potvrda kupovine</title>
+        <link href="../resources/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <div id="wrapper">
+            <h2>Web Shop - Potvrda kupovine</h2>
+            <hr />
+            <h:form>
+                <h:panelGrid columns="2" cellpadding = "10" cellspacing = "1">
+
+                    <h:outputText value="Ime:" />
+                    <h:outputText value="#{purchaseMB.loginBean.loggedInUser.ime}" />
+
+                    <h:outputText value="Prezime:" />
+                    <h:outputText value="#{purchaseMB.loginBean.loggedInUser.prezime}" />
+
+                    <h:outputText value="Broj kartice:" />
+                    <h:inputText required="true" value="#{purchaseMB.creditCard}" requiredMessage="Polje broj kartice je obavezno." > 
+                        <f:validator validatorId="CreditCardValidator"/>
+                    </h:inputText>
+
+                    <h:outputText value="Proizvodi:" />
+                    <h:outputText value="#{purchaseMB.productList}" />
+
+                    <h:outputText value="Ukupna cena: " />
+                    <h:outputText value="#{purchaseMB.korpaBean.totalPrice}" />
+
+                    <h:commandButton value="Potvrda" action="#{purchaseMB.submitPurchase}" />
+                </h:panelGrid>
+                <h:messages />
+            </h:form>
+            <h:outputLink value="../index.xhtml">Povratak na kupovinu</h:outputLink>
+        </div>
+    </h:body>
+</html>
+
